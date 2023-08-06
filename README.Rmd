@@ -1,0 +1,62 @@
+---
+output: github_document
+editor_options: 
+  chunk_output_type: console
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# triangles
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Wrap C code to calculate Pythagorean triples.
+
+## Installation
+
+You can install the development version of triangles with
+
+``` r
+# install.packages("remotes")
+remotes::install_github("jonocarroll/triangles")
+```
+
+## Example
+
+This package is purely for demonstration purposes, supporting this blog post: https://jcarroll.com.au/TBA
+
+The wrapped C code involves many features I learned about so I built this package 
+to support the blog post in an effort to capture as many as possible. The processes 
+here are not new at all, but I found many of the existing resources to be either 
+out of date or confusing.
+
+The function `triangles()` takes a maximum hypotenuse length `maxval` and produces 
+a `data.frame()` in R. The columns represent the lengths of the sides of a 
+right triangle `a`, `b`, and `c` such that all of these are integers, along with the 
+sum of these (the perimeter of the triangle)
+
+```{r}
+library(triangles)
+
+triangles(20)
+```
+
+This is a complete `data.frame` returned from C
+
+```{r}
+x <- triangles(20)
+str(x)
+x[x$sum > 20 & x$sum < 35, ]
+```
+
+Various iterations of the C code can be found in [inst/src](inst/src).
