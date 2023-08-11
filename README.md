@@ -20,7 +20,8 @@ remotes::install_github("jonocarroll/triangles")
 ## Example
 
 This package is purely for demonstration purposes, supporting this blog
-post: <https://jcarroll.com.au/TBA>
+post:
+<https://jcarroll.com.au/2023/08/11/wrapping-c-code-in-an-r-package/>
 
 The wrapped C code involves many features I learned about so I built
 this package to support the blog post in an effort to capture as many as
