@@ -14,3 +14,4 @@ RoxygenNote: 7.2.1
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/jonocarroll/triangles
 BugReports: https://github.com/jonocarroll/triangles/issues
+License: GPL (>= 3)
