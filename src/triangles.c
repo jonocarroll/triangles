@@ -131,8 +131,8 @@ SEXP C_triangles(SEXP maximum) {
   SEXP rowNames;
   PROTECT(rowNames = allocVector(STRSXP, nrows));
   for (int i = 0; i < nrows; ++i) {
-    char rowName[10];
-    snprintf(rowName, sizeof(rowName), "%d", i + 1);
+    char rowName[11];
+    snprintf(rowName, sizeof(rowName), "%10d", i + 1);
     SET_STRING_ELT(rowNames, i, mkChar(rowName));
   }
   setAttrib(df, R_RowNamesSymbol, rowNames);
@@ -146,3 +146,4 @@ SEXP C_triangles(SEXP maximum) {
   return df;
 
 }
+
