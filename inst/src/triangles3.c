@@ -6,7 +6,7 @@ void calculate_sum(int maxval, int ****tri_sum) {
 
   int a, b, c;
 
-  for (c = 1; c <= maxval; c++) {
+  for (c = 1; c < maxval; c++) {
     for (b = 1; b <= c; b++)
       for (a = 1; a <= b; a++)
         if ( ( pow ( a, 2 ) + pow ( b, 2 ) ) == pow ( c, 2 ) ) {
@@ -79,12 +79,12 @@ SEXP C_triangles(SEXP maximum) {
 
   calculate_sum(maxval, &triangles);
 
+  /* count rows */
   int nrows = 0;
-
   for (c = 1; c < maxval; ++c) {
     for (b = 1; b <= c; ++b)
       for (a = 1; a <= b; ++a)
-        if ( ( pow ( a, 2 ) + pow ( b, 2 ) ) == pow ( c, 2 ) ) {
+        if (triangles[a][b][c] != 0) {
           nrows += 1;
         }
   }
@@ -104,7 +104,7 @@ SEXP C_triangles(SEXP maximum) {
   for (c = 1; c < maxval; ++c) {
     for (b = 1; b <= c; ++b) {
       for (a = 1; a <= b; ++a) {
-        if ( ( pow ( a, 2 ) + pow ( b, 2 ) ) == pow ( c, 2 ) ) {
+        if (triangles[a][b][c] != 0) {
           INTEGER(col1)[j] = a;
           INTEGER(col2)[j] = b;
           INTEGER(col3)[j] = c;
